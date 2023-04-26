@@ -1,0 +1,69 @@
+<%- include("layout/header") %>
+<div class="container">
+	<div class="row my-5">
+		<div class="col-lg-6 mx-auto mt-4">
+			<div class="card-shadow">
+				<div
+					class="rounded py-2"
+					style="background-color: rgb(216, 137, 67); text-align: center">
+					<h1 class="text-light">Add new User</h1>
+				</div>
+				<div
+					class="card-body py-4 px-5 border"
+					style="border-color: bisque !important">
+					<form
+						action="/add-user"
+						method="post"
+						id="add-form"
+						enctype="multipart/form-data">
+						<div class="mb-3 text-light">
+							<label for="name">Name</label>
+							<input
+								type="text"
+								name="name"
+								class="form-control form-control-lg mt-3"
+								placeholder="Enter Name"
+								required />
+						</div>
+						<div class="mb-3 text-light">
+							<label for="email">Email</label>
+							<input
+								type="email"
+								name="email"
+								class="form-control form-control-lg mt-3"
+								placeholder="Enter Email"
+								required />
+						</div>
+						<div class="mb-3 text-light">
+							<label for="phone">Phone no.</label>
+							<input
+								type="tel"
+								name="phone"
+								class="form-control form-control-lg mt-3"
+								placeholder="Enter Phone"
+								required />
+						</div>
+						<div class="mb-5 text-light">
+							<label for="image">Image</label>
+							<input
+								type="file"
+								name="image"
+								class="form-control form-control-lg mt-3"
+								required />
+						</div>
+						<div class="mb-3 d-grid">
+							<input
+								type="submit"
+								name="submit"
+								value="Add User"
+								class="btn btn-lg"
+								style="background-color: rgb(216, 137, 67); color: white"
+								required />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<%- include("layout/footer") %>

@@ -5,3 +5,5 @@
 1.  Node Js
 2.  Express Js
 3.  Mongo DB
+4.  Ejs
+5.  Bootstrap
