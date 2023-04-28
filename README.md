@@ -6,4 +6,5 @@
 2.  Express Js
 3.  Mongo DB
 4.  Ejs
-5.  Bootstrap
+5.  Multer
+6.  Bootstrap
