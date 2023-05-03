@@ -14,13 +14,13 @@
 				<div
 					class="rounded py-2"
 					style="background-color: rgb(216, 137, 67); text-align: center">
-					<h1 class="text-light">Add new User</h1>
+					<h1 class="text-light">Edit User: <%= user.name %></h1>
 				</div>
 				<div
 					class="card-body py-4 px-5 border"
 					style="border-color: bisque !important">
 					<form
-						action="/add-user"
+						action="/update/<%= user._id %>"
 						method="post"
 						id="add-form"
 						enctype="multipart/form-data">
@@ -31,6 +31,7 @@
 								name="name"
 								class="form-control form-control-lg mt-3"
 								placeholder="Enter Name"
+								value="<%= user.name %>"
 								required />
 						</div>
 						<div class="mb-3 text-light">
@@ -40,6 +41,7 @@
 								name="email"
 								class="form-control form-control-lg mt-3"
 								placeholder="Enter Email"
+								value="<%= user.email %>"
 								required />
 						</div>
 						<div class="mb-3 text-light">
@@ -49,6 +51,7 @@
 								name="phone"
 								class="form-control form-control-lg mt-3"
 								placeholder="Enter Phone"
+								value="<%= user.phone %>"
 								required />
 						</div>
 						<div class="mb-5 text-light">
@@ -58,12 +61,17 @@
 								name="image"
 								class="form-control form-control-lg mt-3"
 								required />
+							<img
+								src="/<%= user.image  %>"
+								width="100"
+								class="img-thumbnail mt-1" />
 						</div>
+						<input type="hidden" name="old_image" value="<%= user.image %>" />
 						<div class="mb-3 d-grid">
 							<input
 								type="submit"
 								name="submit"
-								value="Add User"
+								value="Update User"
 								class="btn btn-lg"
 								style="background-color: rgb(216, 137, 67); color: white"
 								required />

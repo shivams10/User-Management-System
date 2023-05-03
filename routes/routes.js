@@ -46,8 +46,24 @@ router.get('/', (req, res) => {
 			res.json({ message: error.message });
 		});
 });
+
 router.get('/add-user', (req, res) => {
 	res.render('addUsers', { title: 'Add Users' });
 });
 
+// Edit User Route
+router.get('/edit/:id', async (req, res) => {
+	let id = req.params.id;
+	try {
+		const userDetails = await User.findById(id);
+		if (userDetails) {
+			res.render('editUser', {
+				title: 'Edit User',
+				user: userDetails,
+			});
+		}
+	} catch (error) {
+		console.log(error);
+	}
+});
 module.exports = router;
