@@ -1,6 +1,8 @@
 const express = require('express');
 const multer = require('multer');
 const User = require('../models/users');
+const fs = require('fs');
+const { error, log } = require('console');
 
 const router = express.Router();
 
@@ -67,3 +69,47 @@ router.get('/edit/:id', async (req, res) => {
 	}
 });
 module.exports = router;
+
+// Update User Route
+router.post('/update/:id', upload, (req, res) => {
+	let id = req.params.id;
+	let newImage = '';
+
+	if (req.file) {
+		newImage = req.file.filename;
+		try {
+			fs.unlinkSync('./uploads/' + req.body.old_image);
+		} catch (error) {
+			console.log(error);
+		}
+	} else {
+		newImage = req.body.old_image;
+	}
+
+	const updatedUser = async (id) => {
+		try {
+			const updatedResult = await User.findByIdAndUpdate(
+				id,
+				{
+					name: req.body.name,
+					email: req.body.email,
+					phone: req.body.phone,
+					image: newImage,
+				},
+				{
+					new: true,
+				}
+			);
+			if (updatedResult) {
+				res.render('editUser', {
+					message: 'user updated successfully',
+					title: 'Edit User',
+					user: updatedResult,
+				});
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+	updatedUser(id);
+});
