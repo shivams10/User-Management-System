@@ -2,7 +2,6 @@ const express = require('express');
 const multer = require('multer');
 const User = require('../models/users');
 const fs = require('fs');
-const { error, log } = require('console');
 
 const router = express.Router();
 
@@ -112,4 +111,18 @@ router.post('/update/:id', upload, (req, res) => {
 		}
 	};
 	updatedUser(id);
+});
+
+// Delete User Route
+router.get('/delete/:id', async (req, res) => {
+	let id = req.params.id;
+	const deleteDetails = await User.findByIdAndRemove(id);
+	if (deleteDetails?.image) {
+		try {
+			fs.unlinkSync('./uploads/' + deleteDetails?.image);
+			res.redirect('/');
+		} catch (error) {
+			console.log(error);
+		}
+	}
 });
