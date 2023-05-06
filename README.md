@@ -1,4 +1,4 @@
-## User Management System with image uploading and other crud operation.
+## User Management System (backend) with image uploading and other crud operation.
 
 - The website is basically a backend project that uses ejs for frontend.
 - The web app helps to manage user details like add new user, update a user, delete a user.
